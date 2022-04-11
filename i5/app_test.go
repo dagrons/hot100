@@ -7,9 +7,14 @@ import (
 )
 
 func TestLongestPalindrome(t *testing.T) {
-	a := "cbbd"
-	rs := i5.LongestPalindrome(a)
-	if rs != "bb" {
-		t.Errorf("longestPalindrome failed, s = %s, get %s", a, rs)
+	tries := map[string]string{
+		"cbbd":  "bb",
+		"babad": "bab",
+	}
+	for k, v := range tries {
+		rs := i5.LongestPalindrome(k)
+		if rs != v {
+			t.Errorf("in=%s, out=%s", k, v)
+		}
 	}
 }
