@@ -16,25 +16,22 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	leftList := mergeKLists(lists[:mid+1])
 	rightList := mergeKLists(lists[mid+1:])
 	i, j := leftList, rightList
-	var newHead, newTail *ListNode
-	for i != nil || j != nil {
-		if i == nil || j != nil && i.Val > j.Val {
-			if newHead == nil {
-				newHead, newTail = j, j
-			} else {
-				newTail.Next = j
-				newTail = newTail.Next
-			}
+	head := &ListNode{0, nil}
+	tail := head
+	for i != nil && j != nil {
+		if i.Val > j.Val {
+			tail.Next = j
 			j = j.Next
 		} else {
-			if newHead == nil {
-				newHead, newTail = i, i
-			} else {
-				newTail.Next = i
-				newTail = newTail.Next
-			}
+			tail.Next = i
 			i = i.Next
 		}
+		tail = tail.Next
 	}
-	return newHead
+	if i != nil {
+		tail.Next = i
+	} else if j != nil {
+		tail.Next = j
+	}
+	return head.Next
 }
