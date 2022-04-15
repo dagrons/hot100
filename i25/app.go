@@ -5,6 +5,9 @@ type ListNode struct {
 	Next *ListNode
 }
 
+/*
+	每k个节点反转，就是左边有k个节点进行反转
+*/
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	END := false                  // 是否已经结束
 	prevTail := &ListNode{0, nil} // 上一段的链表尾部
