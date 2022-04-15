@@ -5,13 +5,5 @@ package i42
 */
 
 func trap(height []int) int {
-	a := height
-	ms := []int{}
 
-	res := 0
-	for i := 0; i < len(a); i++ {
-		for len(ms) > 0 && a[ms[len(ms)-1]] > a[i] {
-		}
-	}
-	return res
 }
